@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface NavigationBarProps {}
 
@@ -7,9 +7,15 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
 	const user_id = localStorage.getItem("user_id");
 	const username = localStorage.getItem("username");
 	const [isOpen, setIsOpen] = useState(false);
+	const navigate = useNavigate();
 
 	const displayModal = () => {
 		setIsOpen(!isOpen);
+	};
+
+	const handleLogout = () => {
+		localStorage.clear();
+		navigate("/");
 	};
 
 	return (
@@ -31,13 +37,11 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
 							<p className="cursor-pointer">Profile</p>
 						</Link>
 						<Link to={"/channel"}>
-							<p className="cursor-pointer">
-								Channel
-							</p>
+							<p className="cursor-pointer">Channel</p>
 						</Link>
-						<Link to={"/"}>
+						<button onClick={handleLogout}>
 							<p className="cursor-pointer">Logout</p>
-						</Link>
+						</button>
 					</div>
 				) : null}
 				{user_id ? (

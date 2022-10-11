@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaRegAngry, FaRegHeart, FaRegShareSquare } from "react-icons/fa";
+import { FaHandsHelping, FaRegAngry, FaRegHeart, FaRegShareSquare } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import CustomButton from "../Customs/CustomButton";
 import CustomInput from "../Customs/CustomInput";
@@ -94,15 +94,15 @@ const SingleVideoComponent: React.FC = () => {
 	};
 
 	const trancant = (str: string | null) => {
-		if (str && str.length > 160) {
-			return str.slice(0, 160) + "...";
+		if (str && str.length > 400) {
+			return str.slice(0, 400) + "...";
 		} else {
 			return str;
 		}
 	};
 
 	return (
-		<div className="w-4/5">
+		<div className="w-[76%]">
 			{displayDonate ? (
 				<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50">
 					{" "}
@@ -215,6 +215,10 @@ const SingleVideoComponent: React.FC = () => {
 									<FaRegShareSquare size={24} color={"black"} />
 									<p className="ml-2">Share</p>
 								</button>
+								<div className="flex justify-between items-center cursor-pointer mx-4">
+									<FaHandsHelping size={24} color={"black"} />
+									<p className="ml-2">Target - GHS 200.00</p>
+								</div>
 							</div>
 						</div>
 

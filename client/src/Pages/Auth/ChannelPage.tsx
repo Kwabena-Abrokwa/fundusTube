@@ -191,7 +191,7 @@ const ChannelPage: React.FC<ChannelPageProps> = () => {
 										</div>
 									)}
 									<CustomButton>
-										{loader ? "Please wait..." : "Add project"}
+										{loader ? "Please wait..." : "Upload project"}
 									</CustomButton>
 								</form>
 							</div>
@@ -374,7 +374,7 @@ const ChannelPage: React.FC<ChannelPageProps> = () => {
 									Create a new project
 								</CustomButton>
 							</div>
-							<div>Ghs 200.00</div>
+							<h3 className="text-xl">GHS 80.00</h3>
 						</div>
 						<div>
 							<h3 className="text-3xl py-6">Your projects</h3>

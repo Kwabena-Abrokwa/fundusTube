@@ -28,7 +28,7 @@ const SingleVideo: React.FC<SingleVideoProps> = () => {
 			<section className="px-3 -z-10 w-full overflow-y-scroll pb-80">
 				<div className="lg:flex w-full">
 					<SingleVideoComponent />
-					<div className="lg:w-1/5 cursor-pointer py-2">
+					<div className="lg:w-2/6 cursor-pointer py-2">
 						<h1 className="text-xl font-bold px-2 py-3">
 							Related Videos
 							{data &&

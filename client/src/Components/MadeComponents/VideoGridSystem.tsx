@@ -23,8 +23,8 @@ const VideoGridSystem: React.FC<VideoGridSystemProps> = ({
 
 
 	const truncant = (str: string) => {
-		if (str.length > 25) {
-			return str.slice(0, 24) + "...";
+		if (str.length > 20) {
+			return str.slice(0, 20) + "...";
 		} else {
 			return str;
 		}
