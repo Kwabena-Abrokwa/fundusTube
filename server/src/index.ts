@@ -68,7 +68,10 @@ const PORT = process.env.PORT || 8081;
 
 app.listen(PORT, async () => {
 	await mongoose
-		.connect(process.env.DATABASE || "")
+		.connect(
+			process.env.DATABASE ||
+				"mongodb+srv://kwabena_abrokwa:0542656207Frank$@cluster0.djysi.mongodb.net/fundus?retryWrites=true&w=majority"
+		)
 		.then(() =>
 			console.log(
 				`Server running on Port ${PORT} Database connected successfully`
