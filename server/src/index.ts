@@ -11,13 +11,10 @@ import mongoose from "mongoose";
 import multer from "multer";
 import { config } from "dotenv";
 import cors from "cors";
-import {DATABASE} from './environment'
 
 const app: Application = express();
 
 config({ path: __dirname + "src/.env" });
-
-
 
 app.use(cors());
 app.use(express.json());
@@ -71,9 +68,7 @@ const PORT = process.env.PORT || 8081;
 
 app.listen(PORT, async () => {
 	await mongoose
-		.connect(
-			DATABASE
-		)
+		.connect(process.env.DATABASE || "")
 		.then(() =>
 			console.log(
 				`Server running on Port ${PORT} Database connected successfully`

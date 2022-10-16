@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      DATABASE: string;
+      DATABASE: string | undefined;
       NODE_ENV: 'development' | 'production';
       PORT?: string;
       PWD: string;
@@ -9,5 +9,3 @@ declare global {
     }
   }
 }
-
-export const DATABASE="mongodb+srv://kwabena_abrokwa:0542656207Frank$@cluster0.djysi.mongodb.net/fundus?retryWrites=true&w=majority"
