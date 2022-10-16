@@ -5,7 +5,6 @@ import express, {
 	Request,
 	Response,
 } from "express";
-import AdminRoutes from "./v1/Routes/AdminRoutes";
 import UserRoutes from "./v1/Routes/UsersRoutes";
 import VideoRoutes from "./v1/Routes/VideoRoutes";
 import mongoose from "mongoose";
