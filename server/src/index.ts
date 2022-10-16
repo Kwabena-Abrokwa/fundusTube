@@ -11,14 +11,13 @@ import mongoose from "mongoose";
 import multer from "multer";
 import { config } from "dotenv";
 import cors from "cors";
+import {DATABASE} from './environment'
 
 const app: Application = express();
 
 config({ path: __dirname + "src/.env" });
 
-export const { DATABASE } = process.env as {
-	[key: string]: string;
-};
+
 
 app.use(cors());
 app.use(express.json());
@@ -73,7 +72,7 @@ const PORT = process.env.PORT || 8081;
 app.listen(PORT, async () => {
 	await mongoose
 		.connect(
-			"mongodb+srv://kwabena_abrokwa:0542656207Frank$@cluster0.djysi.mongodb.net/fundus?retryWrites=true&w=majority"
+			DATABASE
 		)
 		.then(() =>
 			console.log(
