@@ -2,11 +2,11 @@ export const VideoDatas = [
 	{
 		id: 1,
 		owner: "Waterflow Foundation",
-		title: "Pipe project for Ablekuma",
-		brief: "This is a pipe project for Ablekuma",
+		title: "Cantamanto Market Project",
+		brief: "We visited Cantamanto in Ghana",
 		img: `donate1.png`,
 		content:
-			"Two assure edward whence the was. Who worthy yet ten boy denote wonder. Weeks views her sight old tears sorry. Additions can suspected its concealed put furnished. Met the why particular devonshire decisively considered partiality. Certain it waiting no entered is. Passed her indeed uneasy shy polite appear denied. Oh less girl no walk. At he spot with five of daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. Unpleasing pianoforte unreserved as oh he unpleasant.",
+			"Cantamanto, Ghana largest selling market is need of help and we visited it today. Helps us reach out to the world by donating to us. Thank you and don't forget to subscribe to our fundusTube channel",
 		video_id: "1010",
 		views: [1, 2, 3, 4, 5, 8, 10],
 		likes: [1, 2, 3, 4, 5, 8, 10],

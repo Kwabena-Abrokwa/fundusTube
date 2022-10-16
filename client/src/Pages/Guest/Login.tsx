@@ -33,7 +33,7 @@ const Login: React.FC<LoginProps> = () => {
 			return null;
 		}
 		await axios
-			.post(`${BACKEND_URL}/loginUser`, data)
+			.post(`/loginUser`, data)
 			.then(({ data }) => {
 				if (data.status) {
 					setloader(false);
