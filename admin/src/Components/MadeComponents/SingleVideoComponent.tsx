@@ -1,6 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaHandsHelping, FaRegAngry, FaRegHeart, FaRegShareSquare } from "react-icons/fa";
+import {
+	FaHandsHelping,
+	FaRegAngry,
+	FaRegHeart,
+	FaRegShareSquare,
+} from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import CustomButton from "../Customs/CustomButton";
 import CustomInput from "../Customs/CustomInput";
@@ -35,7 +40,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleLike = (id: string) => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 
@@ -50,7 +55,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDislike = (id: string) => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 
@@ -65,7 +70,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDonateOpen = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 		setdisplayDonate(true);
@@ -73,7 +78,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDonateClose = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 		setdisplayDonate(false);
@@ -81,14 +86,14 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleSubcribe = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 	};
 
 	const handleUnsubcribe = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 	};

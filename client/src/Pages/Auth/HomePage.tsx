@@ -13,7 +13,7 @@ const HomePage: React.FC<HomePageProps> = () => {
 			.get("http://localhost:8081/api/video/getAllVideos")
 			.then(({ data }) => {
 				console.log(data);
-				document.title="Fund Us Vibes"
+				document.title = "Fund Us Vibes";
 				setdata(data);
 			});
 
@@ -25,8 +25,9 @@ const HomePage: React.FC<HomePageProps> = () => {
 			<section className="w-11/12 mx-auto py-8 -z-10">
 				<div className="lg:grid lg:grid-cols-12 gap-1">
 					{data &&
-						data.map((item: any) => (
+						data.map((item: any, n: number) => (
 							<VideoGridSystem
+								key={n}
 								img={item.img}
 								id={item.video_id}
 								title={item.title}

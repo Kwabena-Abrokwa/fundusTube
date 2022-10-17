@@ -32,8 +32,9 @@ const SingleVideo: React.FC<SingleVideoProps> = () => {
 						<h1 className="text-xl font-bold px-2 py-3">
 							Related Videos
 							{data &&
-								data.map((item: any) => (
+								data.map((item: any, n: number) => (
 									<VideoGridSystem
+										key={n}
 										img={`../${item.img}`}
 										id={item.video_id}
 										title={item.title}

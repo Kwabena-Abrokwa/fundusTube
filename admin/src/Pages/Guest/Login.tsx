@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import CustomButton from "../../Components/Customs/CustomButton";
 import CustomInput from "../../Components/Customs/CustomInput";
-import { Link } from "react-router-dom";
-import { BACKEND_URL } from "../../API/URL";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
 	const [data, setdata] = useState({
-		user_name: "",
+		username: "",
 		password: "",
 	});
 
 	const [loader, setloader] = useState<Boolean>(false);
 	const [message, setmessage] = useState<String>("");
 	const [color, setcolor] = useState("red");
+
+	const navigate = useNavigate();
 
 	const handleChange = (event: any): void => {
 		setdata({
@@ -27,20 +28,20 @@ const Login: React.FC<LoginProps> = () => {
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
 		setloader(true);
-		if (data.user_name === "" || data.password === "") {
+		if (data.username === "" || data.password === "") {
 			setloader(false);
 			setmessage("All fields are required");
 			return null;
 		}
 		await axios
-			.post(`/loginUser`, data)
+			.post(`/loginAdmin`, data)
 			.then(({ data }) => {
 				if (data.status) {
 					setloader(false);
-					localStorage.setItem("user_id", data.user_id);
-					localStorage.setItem("username", data.username);
-					localStorage.setItem("token", data.token);
-					window.history.back();
+					localStorage.setItem("user_id", data.userData.user_id);
+					localStorage.setItem("username", data.userData.username);
+					localStorage.setItem("token", data.userData.token);
+					navigate("/dashboard-home");
 				} else {
 					setmessage(data.message);
 					setcolor("red");
@@ -58,7 +59,7 @@ const Login: React.FC<LoginProps> = () => {
 			<div className="lg:w-2/6 mx-auto mt-16">
 				<div className="logo w-20 mx-auto"></div>
 				<div className="title text-center py-6">
-					<h3 className="text-xl font-medium">Sign in here</h3>
+					<h3 className="text-xl font-medium">Admin Dashboard</h3>
 				</div>
 				<div className="w-full lg:shadow-md lg:border lg:rounded-lg p-2 my-5">
 					<form
@@ -66,13 +67,12 @@ const Login: React.FC<LoginProps> = () => {
 						onSubmit={handleLogin}
 					>
 						<div className="my-8">
-							<label className="text-md font-semibold">User Name</label>
+							<label className="text-md font-semibold">Admin Name</label>
 							<CustomInput
 								type={"text"}
-								value={data.user_name}
-								name={"user_name"}
+								value={data.username}
+								name={"username"}
 								handleChange={handleChange}
-								placeholder={"Example: kwabena__"}
 							/>
 						</div>
 						<div className="my-8">
@@ -83,19 +83,6 @@ const Login: React.FC<LoginProps> = () => {
 								name={"password"}
 								handleChange={handleChange}
 							/>
-						</div>
-						<div className="flex justify-between items-center my-8">
-							<div className="flex  items-center">
-								<input type={"checkbox"} id={"remember"} />
-								<p className="ml-2 cursor-pointer" id={"remember"}>
-									Remember me
-								</p>
-							</div>
-							<div>
-								<Link to={"/signup"}>
-									<p className="text-gray-500">Sign up here</p>
-								</Link>
-							</div>
 						</div>
 						{message && (
 							<div

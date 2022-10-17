@@ -14,7 +14,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
 				<div className="w-1/6 left-0 top-0 relative">
 					<AsideBar />
 				</div>
-				<div className="w-5/6 h-screen">{children}</div>
+				<div className="w-5/6 h-screen mx-auto">{children}</div>
 			</div>
 		</main>
 	);

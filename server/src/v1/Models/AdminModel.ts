@@ -22,8 +22,14 @@ const AdminSchema = new mongoose.Schema(
 			type: String,
 			require: false,
 		},
+		password: {
+			type: String,
+			require: true,
+		},
 	},
 	{
 		timestamps: true,
 	}
 );
+
+export default mongoose.model("admins", AdminSchema);

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import CustomButton from "../../Components/Customs/CustomButton";
 import CustomInput from "../../Components/Customs/CustomInput";
 import { Link } from "react-router-dom";
-import { BACKEND_URL } from "../../API/URL";
 import axios from "axios";
 
 interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
 	const [data, setdata] = useState({
-		user_name: "",
+		username: "",
 		password: "",
 	});
 
@@ -26,20 +25,23 @@ const Login: React.FC<LoginProps> = () => {
 
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
+
+		setmessage("");
 		setloader(true);
-		if (data.user_name === "" || data.password === "") {
+
+		if (data.username === "" || data.password === "") {
 			setloader(false);
 			setmessage("All fields are required");
 			return null;
 		}
 		await axios
-			.post(`/loginUser`, data)
+			.post(`/login`, data)
 			.then(({ data }) => {
 				if (data.status) {
 					setloader(false);
-					localStorage.setItem("user_id", data.user_id);
-					localStorage.setItem("username", data.username);
-					localStorage.setItem("token", data.token);
+					localStorage.setItem("user_id", data.userData.user_id);
+					localStorage.setItem("username", data.userData.username);
+					localStorage.setItem("token", data.userData.token);
 					window.history.back();
 				} else {
 					setmessage(data.message);
@@ -49,6 +51,9 @@ const Login: React.FC<LoginProps> = () => {
 			})
 			.catch((err) => {
 				console.log(err);
+				setloader(false);
+				setmessage(err?.response.data.message);
+				setcolor("red");
 				setloader(false);
 			});
 	};
@@ -69,8 +74,8 @@ const Login: React.FC<LoginProps> = () => {
 							<label className="text-md font-semibold">User Name</label>
 							<CustomInput
 								type={"text"}
-								value={data.user_name}
-								name={"user_name"}
+								value={data.username}
+								name={"username"}
 								handleChange={handleChange}
 								placeholder={"Example: kwabena__"}
 							/>

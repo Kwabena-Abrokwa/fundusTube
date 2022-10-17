@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import ChannelAnalytics from "./Pages/Auth/ChannelAnalytics";
-import ChannelPage from "./Pages/Auth/ChannelPage";
+import ChannelAnalytics from "./Pages/Auth/ChannelPage/ChannelAnalytics";
+import ChannelPage from "./Pages/Auth/ChannelPage/ChannelPage";
 import HomePage from "./Pages/Auth/HomePage";
 import ProfilePage from "./Pages/Auth/ProfilePage";
 import SingleVideo from "./Pages/Auth/SingleVideo";

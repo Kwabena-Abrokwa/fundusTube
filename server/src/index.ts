@@ -5,6 +5,7 @@ import express, {
 	Request,
 	Response,
 } from "express";
+import AdminRoutes from "./v1/Routes/AdminRoutes";
 import UserRoutes from "./v1/Routes/UsersRoutes";
 import VideoRoutes from "./v1/Routes/VideoRoutes";
 import mongoose from "mongoose";
@@ -60,7 +61,7 @@ app.use(
 );
 
 //Api Routes
-app.use("/api/admin", UserRoutes);
+app.use("/api/admin", AdminRoutes);
 app.use("/api/user", UserRoutes);
 app.use("/api/video", VideoRoutes);
 

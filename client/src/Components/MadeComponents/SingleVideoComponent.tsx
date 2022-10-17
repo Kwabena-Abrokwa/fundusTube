@@ -1,6 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaHandsHelping, FaRegAngry, FaRegHeart, FaRegShareSquare } from "react-icons/fa";
+import {
+	FaHandsHelping,
+	FaRegAngry,
+	FaRegHeart,
+	FaRegShareSquare,
+} from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
 import CustomButton from "../Customs/CustomButton";
 import CustomInput from "../Customs/CustomInput";
@@ -35,7 +40,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleLike = (id: string) => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 
@@ -50,7 +55,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDislike = (id: string) => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 
@@ -65,7 +70,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDonateOpen = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 		setdisplayDonate(true);
@@ -73,7 +78,7 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleDonateClose = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 		setdisplayDonate(false);
@@ -81,14 +86,14 @@ const SingleVideoComponent: React.FC = () => {
 
 	const handleSubcribe = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 	};
 
 	const handleUnsubcribe = () => {
 		if (!user_id) {
-			navigate("/signup");
+			navigate("/login");
 			return null;
 		}
 	};
@@ -104,10 +109,13 @@ const SingleVideoComponent: React.FC = () => {
 	return (
 		<div className="w-[76%]">
 			{displayDonate ? (
-				<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50">
+				<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50 ">
 					{" "}
-					<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px]">
-						<div className="  " onClick={handleDonateClose}>
+					<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px] relative">
+						<div
+							className=" absolute right-3 top-2 cursor-pointer bg-red-600 p-2 text-white"
+							onClick={handleDonateClose}
+						>
 							<h1>Close</h1>
 						</div>
 
@@ -166,8 +174,8 @@ const SingleVideoComponent: React.FC = () => {
 				</div>
 			) : null}
 			{data &&
-				data.map((item: any) => (
-					<div className="w-11/12 mx-auto">
+				data.map((item: any, n: number) => (
+					<div className="w-11/12 mx-auto" key={n}>
 						{loader ? (
 							<>
 								<div>Please wait</div>
@@ -332,8 +340,8 @@ const SingleVideoComponent: React.FC = () => {
 
 						<div>
 							<h1 className="text-2xl underline pb-4">Comments</h1>
-							{item.comments.map((comment: any) => (
-								<div className="py-3">
+							{item.comments.map((comment: any, n: number) => (
+								<div className="py-3" key={n}>
 									<div className="flex items-start">
 										<img
 											src={`../${comment.user_profile}`}

@@ -1,11 +1,11 @@
+import AdminModel from "../Models/AdminModel";
 import { Request, Response } from "express";
-import UsersModel from "../Models/UsersModel";
 import bcrypt from "bcrypt";
-import { createUserValidation } from "../Validations/UserValidations";
+import { createAdminValidation } from "../Validations/AdminValidations";
 
-export const createUserAccount = async (req: Request, res: Response) => {
+export const createAdminAccount = async (req: Request, res: Response) => {
 	try {
-		const { error } = createUserValidation(req.body);
+		const { error } = createAdminValidation(req.body);
 		if (error)
 			return res.status(400).json({ message: error.details[0].message });
 
@@ -13,7 +13,7 @@ export const createUserAccount = async (req: Request, res: Response) => {
 		const username: String = req.body.username;
 		const password = req.body.password;
 
-		const userEmailExist = await UsersModel.findOne({
+		const userEmailExist = await AdminModel.findOne({
 			email: email.toLowerCase(),
 		});
 		if (userEmailExist)
@@ -22,7 +22,7 @@ export const createUserAccount = async (req: Request, res: Response) => {
 				message: "Email already exist, kindly use another",
 			});
 
-		const userNameExist = await UsersModel.findOne({
+		const userNameExist = await AdminModel.findOne({
 			username: username,
 		});
 
@@ -35,7 +35,7 @@ export const createUserAccount = async (req: Request, res: Response) => {
 		const salt = bcrypt.genSaltSync(10);
 		const hash = bcrypt.hashSync(password, salt);
 
-		const createNewUser = new UsersModel({
+		const createNewUser = new AdminModel({
 			user_id: user_id,
 			username: username,
 			email: email.toLowerCase(),
@@ -65,12 +65,14 @@ export const createUserAccount = async (req: Request, res: Response) => {
 	}
 };
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginAdmin = async (req: Request, res: Response) => {
 	try {
 		const username: string = req.body.username;
 		const password: string = req.body.password;
 
-		const findUser = await UsersModel.findOne({ username: username });
+		const findUser = await AdminModel.findOne(
+			{ email: username.toLowerCase() } 
+		);
 
 		if (!findUser) {
 			return res.json({ status: false, message: "No user found" });

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import CustomButton from "../../Components/Customs/CustomButton";
-import CustomInput from "../../Components/Customs/CustomInput";
+import CustomButton from "../../../Components/Customs/CustomButton";
+import CustomInput from "../../../Components/Customs/CustomInput";
 import axios from "axios";
 
-import DashboardLayout from "../../Components/LayoutComponent/DashboardLayout";
-import CustomSelect from "../../Components/Customs/CustomSelect";
-import VideoGridSystem from "../../Components/MadeComponents/VideoGridSystem";
+import DashboardLayout from "../../../Components/LayoutComponent/DashboardLayout";
+import CustomSelect from "../../../Components/Customs/CustomSelect";
+import VideoGridSystem from "../../../Components/MadeComponents/VideoGridSystem";
 
 interface ChannelPageProps {}
 
@@ -87,9 +87,9 @@ const ChannelPage: React.FC<ChannelPageProps> = () => {
 				{displayAddVideo ? (
 					<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50">
 						{" "}
-						<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px]">
+						<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px] relative">
 							<div
-								className="  "
+								className="absolute right-3 top-2 cursor-pointer bg-red-600 p-2 text-white"
 								onClick={() => setdisplayAddVideo(false)}
 							>
 								<h1>Close</h1>

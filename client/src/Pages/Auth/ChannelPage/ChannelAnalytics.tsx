@@ -1,29 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import BarChart from "../../Components/Charts/BarChart";
-import CustomButton from "../../Components/Customs/CustomButton";
-import CustomInput from "../../Components/Customs/CustomInput";
-import CustomSelect from "../../Components/Customs/CustomSelect";
-import DashboardLayout from "../../Components/LayoutComponent/DashboardLayout";
-import TableComponent from "../../Components/MadeComponents/TableComponent";
 
-const donation = [
-	{
-		id: 1,
-		date: "Sunday",
-		donation: 300,
-	},
-	{
-		id: 1,
-		date: "Monday",
-		donation: 100,
-	},
-	{
-		id: 1,
-		date: "Tuesday",
-		donation: 500,
-	},
-];
+import React, {useState } from "react";
+import BarChart from "../../../Components/Charts/BarChart";
+import CustomButton from "../../../Components/Customs/CustomButton";
+import CustomInput from "../../../Components/Customs/CustomInput";
+import DashboardLayout from "../../../Components/LayoutComponent/DashboardLayout";
+import TableComponent from "../../../Components/MadeComponents/TableComponent";
+
 
 const transactions = [
 	{
@@ -71,9 +53,9 @@ const ChannelAnalytics: React.FC<ChannelAnalyticsProps> = ({}) => {
 					{displayAddVideo ? (
 						<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50">
 							{" "}
-							<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px]">
+							<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px] relative">
 								<div
-									className="  "
+									className=" absolute right-3 top-2 cursor-pointer bg-red-600 p-2 text-white"
 									onClick={() => setdisplayAddVideo(false)}
 								>
 									<h1>Close</h1>
@@ -128,9 +110,9 @@ const ChannelAnalytics: React.FC<ChannelAnalyticsProps> = ({}) => {
 					{displayEvidence ? (
 						<div className="fixed w-screen h-screen bg-[#00000070] top-0 left-0 z-50">
 							{" "}
-							<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px]">
+							<div className="bg-white w-2/6 mx-auto mt-36 overflow-scroll h-[480px] relative">
 								<div
-									className="  "
+									className=" absolute right-3 top-2 cursor-pointer bg-red-600 p-2 text-white"
 									onClick={() => setdisplayEvidence(false)}
 								>
 									<h1>Close</h1>
